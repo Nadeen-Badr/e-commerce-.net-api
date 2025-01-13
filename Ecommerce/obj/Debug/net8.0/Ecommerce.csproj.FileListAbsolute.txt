@@ -137,3 +137,6 @@ D:\git reeepooos\e-commerce .net api\Ecommerce\bin\Debug\net8.0\runtimes\win\lib
 D:\git reeepooos\e-commerce .net api\Ecommerce\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\git reeepooos\e-commerce .net api\Ecommerce\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\git reeepooos\e-commerce .net api\Ecommerce\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\git reeepooos\e-commerce .net api\Ecommerce\bin\Debug\net8.0\AutoMapper.dll
+D:\git reeepooos\e-commerce .net api\Ecommerce\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\git reeepooos\e-commerce .net api\Ecommerce\obj\Debug\net8.0\Ecommerce.sourcelink.json

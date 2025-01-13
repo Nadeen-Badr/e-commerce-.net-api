@@ -5,6 +5,7 @@ using ECommerceApi.Models;
 using ECommerceApi.Repositories;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -12,10 +13,12 @@ using System.Threading.Tasks;
 public class ProductController : ControllerBase
 {
     private readonly IProductRepository _productRepository;
+    private readonly IMapper _mapper;
 
-    public ProductController(IProductRepository productRepository)
+    public ProductController(IProductRepository productRepository,IMapper mapper)
     {
         _productRepository = productRepository;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -28,7 +31,8 @@ public class ProductController : ControllerBase
         Console.WriteLine($"User Role: {userRole}");
 
         var products = await _productRepository.GetAllAsync();
-        return Ok(products);
+        var productDtos = _mapper.Map<IEnumerable<ProductResponseDTO>>(products);
+        return Ok(productDtos);
     }
 
     [HttpGet("{id}")]
