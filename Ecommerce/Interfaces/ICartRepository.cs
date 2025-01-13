@@ -10,5 +10,6 @@ namespace ECommerceApi.Repositories
         Task AddToCartAsync(Cart cart);
         Task RemoveFromCartAsync(int cartItemId);
         Task<Cart> GetCartItemByIdAsync(int cartItemId);
+        Task ClearCartAsync(string buyerId);
     }
 }

@@ -26,17 +26,18 @@ namespace ECommerceApi.Data
                 .HasForeignKey(p => p.SellerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Order>()
-                .HasOne(o => o.Buyer)
-                .WithMany()
-                .HasForeignKey(o => o.BuyerId)
-                .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Order>()
+        .HasMany(o => o.OrderItems)
+        .WithOne()
+        .HasForeignKey(oi => oi.OrderId)
+        .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Product)
-                .WithMany()
-                .HasForeignKey(oi => oi.ProductId)
-                .OnDelete(DeleteBehavior.Restrict);
+    // Configure the relationship between OrderItem and Product
+    modelBuilder.Entity<OrderItem>()
+        .HasOne(oi => oi.Product)
+        .WithMany()
+        .HasForeignKey(oi => oi.ProductId)
+        .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Cart>()
             .HasOne(c => c.Product)
             .WithMany()

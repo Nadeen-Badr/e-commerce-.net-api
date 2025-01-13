@@ -44,5 +44,14 @@ namespace ECommerceApi.Repositories
                 .Include(c => c.Product) // Include the Product details
                 .FirstOrDefaultAsync(c => c.Id == cartItemId);
         }
+        public async Task ClearCartAsync(string buyerId)
+        {
+            var cartItems = await _context.Carts
+                .Where(c => c.BuyerId == buyerId)
+                .ToListAsync();
+
+            _context.Carts.RemoveRange(cartItems);
+            await _context.SaveChangesAsync();
+        }
     }
 }

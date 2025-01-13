@@ -120,6 +120,7 @@ builder.Services.AddSwaggerGen(c =>
 //services 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 

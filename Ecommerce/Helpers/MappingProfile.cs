@@ -13,6 +13,14 @@ namespace ECommerceApi.Helpers
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.Product.Description))
                 .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price));
+            CreateMap<Order, OrderResponseDTO>()
+                .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems));
+
+            // Map OrderItem to OrderItemResponseDTO
+            CreateMap<OrderItem, OrderItemResponseDTO>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
+                .ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.Product.Description))
+                .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price));
         }
     }
 }
