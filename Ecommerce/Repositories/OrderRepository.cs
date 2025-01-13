@@ -19,5 +19,13 @@ namespace ECommerceApi.Repositories
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Order>> GetOrderHistoryAsync(string buyerId)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .Where(o => o.BuyerId == buyerId)
+                .ToListAsync();
+        }
     }
 }

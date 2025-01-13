@@ -60,4 +60,17 @@ public async Task<IActionResult> PlaceOrder()
 
     return Ok(orderResponse);
 }
+[HttpGet("order-history")]
+public async Task<IActionResult> GetOrderHistory()
+{
+    var buyerId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+    if (string.IsNullOrEmpty(buyerId))
+        return Unauthorized("User not authenticated.");
+
+    var orders = await _orderRepository.GetOrderHistoryAsync(buyerId);
+    var orderDtos = _mapper.Map<IEnumerable<OrderResponseDTO>>(orders);
+
+    return Ok(orderDtos);
+}
 }
