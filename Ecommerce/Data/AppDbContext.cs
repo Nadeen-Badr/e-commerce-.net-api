@@ -9,6 +9,7 @@ namespace ECommerceApi.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+         public DbSet<Cart> Carts { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -36,6 +37,11 @@ namespace ECommerceApi.Data
                 .WithMany()
                 .HasForeignKey(oi => oi.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Cart>()
+            .HasOne(c => c.Product)
+            .WithMany()
+            .HasForeignKey(c => c.ProductId)
+            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

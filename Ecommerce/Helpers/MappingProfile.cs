@@ -9,6 +9,10 @@ namespace ECommerceApi.Helpers
         public MappingProfile()
         {
             CreateMap<Product, ProductResponseDTO>();
+             CreateMap<Cart, CartResponseDTO>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
+                .ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.Product.Description))
+                .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.Product.Price));
         }
     }
 }
